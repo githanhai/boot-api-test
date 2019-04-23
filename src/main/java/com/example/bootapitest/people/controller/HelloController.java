@@ -3,6 +3,7 @@ package com.example.bootapitest.people.controller;
 
 import com.example.bootapitest.hntest.dto.TypeExponentDto;
 import com.example.bootapitest.hntest.service.TypeServer;
+import com.example.bootapitest.people.SystemControllerLog;
 import com.example.bootapitest.people.entity.People;
 import com.example.bootapitest.people.service.BaseRestController;
 import com.example.bootapitest.people.service.PeopleServer;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.nio.charset.Charset;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -70,9 +72,16 @@ public class HelloController extends BaseRestController {
 
 
     @RequestMapping(value = "/getList", method = RequestMethod.GET)
+    @SystemControllerLog(descrption = "查询用户信息",actionType = "4")
     public List<TypeExponentDto> getList() {
-        peopleServer.select();
-
+//        peopleServer.select();
+        Snowflake snowFlake = Snowflake.getInstanceSnowflake();
+        Date date = new Date();
+        for (int i = 0; i < (1 << 20); i++) {
+            System.out.println(snowFlake.Id()+"--------"+i);
+        }
+        System.out.println(date);
+        System.out.println(new Date());
         return null;
     }
 

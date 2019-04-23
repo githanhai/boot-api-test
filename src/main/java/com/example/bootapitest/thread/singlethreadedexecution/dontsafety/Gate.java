@@ -1,5 +1,7 @@
 package com.example.bootapitest.thread.singlethreadedexecution.dontsafety;
 
+import com.example.bootapitest.people.SystemControllerLog;
+
 public class Gate {
     private int counter = 0;
     private String name = "Nobody";
@@ -11,6 +13,7 @@ public class Gate {
         check();
     }
 
+    @Override
     public String toString(){
         return "No."+counter +":"+name+","+address;
     }
